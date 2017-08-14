@@ -13,6 +13,11 @@
 		E2C209C61F41919200A31B90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2C209C51F41919200A31B90 /* Assets.xcassets */; };
 		E2C209C91F41919200A31B90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2C209C71F41919200A31B90 /* LaunchScreen.storyboard */; };
 		E2C209D41F41919200A31B90 /* BLENavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C209D31F41919200A31B90 /* BLENavigatorTests.swift */; };
+		E2C209E11F41937500A31B90 /* PeripheralsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C209E01F41937500A31B90 /* PeripheralsTableViewCell.swift */; };
+		E2C209E31F41BA8B00A31B90 /* PeripheralsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C209E21F41BA8B00A31B90 /* PeripheralsTableViewController.swift */; };
+		E2C209E51F41BB4200A31B90 /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C209E41F41BB4200A31B90 /* Peripheral.swift */; };
+		E2C209E71F41D3B800A31B90 /* CharacteristicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C209E61F41D3B800A31B90 /* CharacteristicsTableViewController.swift */; };
+		E2C209E91F41D8D500A31B90 /* ServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C209E81F41D8D500A31B90 /* ServicesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		E2C209CF1F41919200A31B90 /* BLENavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLENavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C209D31F41919200A31B90 /* BLENavigatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLENavigatorTests.swift; sourceTree = "<group>"; };
 		E2C209D51F41919200A31B90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2C209E01F41937500A31B90 /* PeripheralsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralsTableViewCell.swift; sourceTree = "<group>"; };
+		E2C209E21F41BA8B00A31B90 /* PeripheralsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralsTableViewController.swift; sourceTree = "<group>"; };
+		E2C209E41F41BB4200A31B90 /* Peripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
+		E2C209E61F41D3B800A31B90 /* CharacteristicsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicsTableViewController.swift; sourceTree = "<group>"; };
+		E2C209E81F41D8D500A31B90 /* ServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +90,14 @@
 				E2C209BE1F41919200A31B90 /* AppDelegate.swift */,
 				E2C209C01F41919200A31B90 /* ViewController.swift */,
 				E2C209C21F41919200A31B90 /* Main.storyboard */,
+				E2C209E81F41D8D500A31B90 /* ServicesTableViewController.swift */,
+				E2C209E21F41BA8B00A31B90 /* PeripheralsTableViewController.swift */,
+				E2C209E61F41D3B800A31B90 /* CharacteristicsTableViewController.swift */,
+				E2C209E41F41BB4200A31B90 /* Peripheral.swift */,
 				E2C209C51F41919200A31B90 /* Assets.xcassets */,
 				E2C209C71F41919200A31B90 /* LaunchScreen.storyboard */,
 				E2C209CA1F41919200A31B90 /* Info.plist */,
+				E2C209E01F41937500A31B90 /* PeripheralsTableViewCell.swift */,
 			);
 			path = BLENavigator;
 			sourceTree = "<group>";
@@ -201,8 +216,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C209E71F41D3B800A31B90 /* CharacteristicsTableViewController.swift in Sources */,
+				E2C209E51F41BB4200A31B90 /* Peripheral.swift in Sources */,
 				E2C209C11F41919200A31B90 /* ViewController.swift in Sources */,
+				E2C209E31F41BA8B00A31B90 /* PeripheralsTableViewController.swift in Sources */,
+				E2C209E91F41D8D500A31B90 /* ServicesTableViewController.swift in Sources */,
 				E2C209BF1F41919200A31B90 /* AppDelegate.swift in Sources */,
+				E2C209E11F41937500A31B90 /* PeripheralsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
