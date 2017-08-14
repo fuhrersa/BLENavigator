@@ -9,6 +9,16 @@
 import UIKit
 
 class ServicesTableViewController: UITableViewController {
+    
+    //MARK: Properties
+    var services = [Service]()
+    
+    //MARK: Methods
+    func add(service: Service) {
+        services.append(service)
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

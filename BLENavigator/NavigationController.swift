@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("navigation controller loaded")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
