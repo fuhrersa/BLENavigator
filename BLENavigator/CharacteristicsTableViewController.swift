@@ -7,9 +7,51 @@
 //
 
 import UIKit
+import CoreBluetooth
 
-class CharacteristicsTableViewController: UITableViewController {
+class CharacteristicsTableViewController: UITableViewController, CBPeripheralDelegate {
 
+    //MARK: Properties
+    var characteristics = [CBCharacteristic]()
+    var service: CBService? = nil
+    
+    //MARK: Methods
+    func add(charactersitic: CBCharacteristic) {
+        let indexPath = IndexPath(row: characteristics.count, section: 0)
+        characteristics.append(charactersitic)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+    func remove(service: CBCharacteristic) {
+        if let index = characteristics.index(of: service) {
+            let indexPath = IndexPath(row: index, section: 0)
+            characteristics.remove(at: index)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        print("** didDiscoverCharacteristics for: " + service.uuid.description)
+        characteristics = service.characteristics ?? []
+        tableView.reloadData()
+    }
+
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return characteristics.count
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,27 +67,20 @@ class CharacteristicsTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cellIdentifier = "CharacteristicsTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CharacteristicsTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of CharacteristicsTableViewCell.")
+        }
+        
+        let characteristic = characteristics[indexPath.row]
+        cell.nameLabel.text = characteristic.uuid.description
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -53,7 +88,8 @@ class CharacteristicsTableViewController: UITableViewController {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+ */
+    
 
     /*
     // Override to support editing the table view.

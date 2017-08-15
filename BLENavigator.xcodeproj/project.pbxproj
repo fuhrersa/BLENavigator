@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E229CE771F42CD410003B6DD /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E229CE761F42CD410003B6DD /* CentralManager.swift */; };
 		E2A8F2C81F41E3EC00961321 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8F2C71F41E3EC00961321 /* Service.swift */; };
 		E2A8F2CA1F41E41A00961321 /* Characteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8F2C91F41E41A00961321 /* Characteristic.swift */; };
 		E2A8F2CC1F41E47200961321 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8F2CB1F41E47200961321 /* ServicesTableViewCell.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E229CE761F42CD410003B6DD /* CentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralManager.swift; sourceTree = "<group>"; };
 		E2A8F2C71F41E3EC00961321 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E2A8F2C91F41E41A00961321 /* Characteristic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
 		E2A8F2CB1F41E47200961321 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewCell.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				E2C209C21F41919200A31B90 /* Main.storyboard */,
 				E2C209E81F41D8D500A31B90 /* ServicesTableViewController.swift */,
 				E2C209E21F41BA8B00A31B90 /* PeripheralsTableViewController.swift */,
+				E229CE761F42CD410003B6DD /* CentralManager.swift */,
 				E2C209E61F41D3B800A31B90 /* CharacteristicsTableViewController.swift */,
 				E2C209E41F41BB4200A31B90 /* Peripheral.swift */,
 				E2A8F2C71F41E3EC00961321 /* Service.swift */,
@@ -239,6 +242,7 @@
 				E2C209E91F41D8D500A31B90 /* ServicesTableViewController.swift in Sources */,
 				E2C209BF1F41919200A31B90 /* AppDelegate.swift in Sources */,
 				E2C209E11F41937500A31B90 /* PeripheralsTableViewCell.swift in Sources */,
+				E229CE771F42CD410003B6DD /* CentralManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

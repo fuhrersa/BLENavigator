@@ -7,17 +7,39 @@
 //
 
 import UIKit
+import CoreBluetooth
 
-class ServicesTableViewController: UITableViewController {
+class ServicesTableViewController: UITableViewController, CBPeripheralDelegate {
     
     //MARK: Properties
-    var services = [Service]()
-    
+    var services = [CBService]()
+    var peripheral: CBPeripheral? = nil
+    var manager: CBCentralManager? = nil
+
     //MARK: Methods
-    func add(service: Service) {
+    func add(service: CBService) {
+        let indexPath = IndexPath(row: services.count, section: 0)
         services.append(service)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
+    func remove(service: CBService) {
+        if let index = services.index(of: service) {
+            let indexPath = IndexPath(row: index, section: 0)
+            services.remove(at: index)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+
+    override func willMove(toParentViewController parent: UIViewController?)
+    {
+        super.willMove(toParentViewController: parent)
+        if parent == nil {
+            manager!.cancelPeripheralConnection(peripheral!)
+        }
+    }
+    
+   
     
 
     override func viewDidLoad() {
@@ -38,28 +60,39 @@ class ServicesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return services.count
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "CharacteristicsSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    /*
+    
+    
+    // MARK: CBPeripheralDelegate methods
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        print("** didDiscoverServices")
+        services = peripheral.services ?? []
+        tableView.reloadData()
+    }
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cellIdentifier = "ServicesTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ServicesTableViewCell  else {
+            fatalError("The dequeued cell is not an instance of ServicesTableViewCell.")
+        }
+        
+        let service = services[indexPath.row]
+        cell.nameLabel.text = service.uuid.description
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -96,14 +129,23 @@ class ServicesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "CharacteristicsSegue") {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let service = services[indexPath.row]
+                let destinationViewController = segue.destination as! CharacteristicsTableViewController
+                destinationViewController.service = service
+                peripheral!.discoverCharacteristics(nil, for: service)
+                peripheral!.delegate = destinationViewController
+
+            }
+        }
     }
-    */
+    
+    
 
 }
